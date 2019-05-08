@@ -28,7 +28,7 @@ namespace Dolphin
                     while (reader.Read())
                     {
                         var encryptedData = (byte[])reader[0];
-                        var decodedData = System.Security.Cryptography.ProtectedData.Unprotect(encryptedData, null, System.Security.Cryptography.DataProtectionScope.CurrentUser);  // расшифровка паролей 
+                        var decodedData = System.Security.Cryptography.ProtectedData.Unprotect(encryptedData, null, System.Security.Cryptography.DataProtectionScope.CurrentUser); 
                         var plainText = Encoding.ASCII.GetString(decodedData);
                         yield return Tuple.Create(reader.GetString(2), reader.GetString(1), plainText);
                     }
